@@ -8192,7 +8192,7 @@ PrefabInstance:
       objectReference: {fileID: 1349710306}
     - target: {fileID: 5092527505451839021, guid: 0c7e06a747dc48441bed4db4e2f169f3, type: 3}
       propertyPath: m_text
-      value: 'LEVEL: 2/3'
+      value: 'LEVEL: 2/5'
       objectReference: {fileID: 0}
     - target: {fileID: 5092527505451839021, guid: 0c7e06a747dc48441bed4db4e2f169f3, type: 3}
       propertyPath: m_margin.x

@@ -16,8 +16,8 @@ public class enemyCirclePath : MonoBehaviour
     void Update()
     {
         angle += speed * Time.deltaTime;
-        float x = centerPosition.position.x + Mathf.Cos(angle) * radius;
-        float y = centerPosition.position.y + Mathf.Sin(angle) * radius;
+        float x = centerPosition.position.x + Mathf.Cos(angle*Mathf.Deg2Rad)* radius;
+        float y = centerPosition.position.y + Mathf.Sin(angle*Mathf.Deg2Rad) * radius;
         transform.position = new Vector3(x, y, transform.position.z);
     }
     public void OnTriggerEnter2D(Collider2D collision)
