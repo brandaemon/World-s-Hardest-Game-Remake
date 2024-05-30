@@ -17,7 +17,8 @@ public class coin : MonoBehaviour
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        print(collision.gameObject.tag);
+        if (collision.CompareTag("CoinHitbox"))
         {
             GameManager gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
             gameManager.collectCoin();

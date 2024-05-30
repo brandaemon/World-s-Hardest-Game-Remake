@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
+        transparency();
     }
     void FixedUpdate()
     {
@@ -25,15 +26,17 @@ public class PlayerMovement : MonoBehaviour
         position.y = position.y + speed * vertical * Time.deltaTime;
         rigidbody2d.MovePosition(position);
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        
-    }
-
     public void resetPlayer()
     {
         transform.position = startingPos;
     }
-    //player clips through walls
+    public IEnumerator transparency()
+    {
+        Color tmp = GetComponent<SpriteRenderer>().color;
+        for (float alpha = 1f; alpha >= 0; alpha-=0.1f)
+        {
+            
+        }
+        GetComponent<SpriteRenderer>().color = tmp;
+    }
 }

@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviour
     {
         deaths = DeathM.deaths;
     }
-
     public void collectCoin()
     {
         collectedCoins++;
