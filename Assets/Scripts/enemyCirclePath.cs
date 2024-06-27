@@ -22,11 +22,11 @@ public class enemyCirclePath : MonoBehaviour
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        PlayerMovement player = collision.gameObject.GetComponent<PlayerMovement>();
+        if (collision.CompareTag("Player") && player.alive)
         {
-            PlayerMovement player = collision.gameObject.GetComponent<PlayerMovement>();
+            player.audioSource.PlayOneShot(player.deathSFX, 1F);
             player.resetPlayer();
-            manager.resetCoins();
         }
     }
 }

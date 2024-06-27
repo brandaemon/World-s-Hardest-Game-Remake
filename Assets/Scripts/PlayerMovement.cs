@@ -8,35 +8,54 @@ public class PlayerMovement : MonoBehaviour
     float vertical;
     public float speed = 3.0f;
     private Vector2 startingPos;
+    public bool alive = true;
+    public AudioClip coinCollectSFX;
+    public AudioClip deathSFX;
+    public AudioSource audioSource;
     void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
         startingPos = transform.position;
+        audioSource = GetComponent<AudioSource>();
     }
     void Update()
     {
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
-        transparency();
     }
     void FixedUpdate()
     {
         Vector2 position = rigidbody2d.position;
         position.x = position.x + speed * horizontal * Time.deltaTime;
         position.y = position.y + speed * vertical * Time.deltaTime;
-        rigidbody2d.MovePosition(position);
+        if(alive)
+        {
+            rigidbody2d.MovePosition(position);
+        }
     }
     public void resetPlayer()
     {
-        transform.position = startingPos;
+        if(alive)
+        {
+            alive = false;
+            StartCoroutine(transparency());
+        }
     }
     public IEnumerator transparency()
     {
-        Color tmp = GetComponent<SpriteRenderer>().color;
-        for (float alpha = 1f; alpha >= 0; alpha-=0.1f)
+        for (float alpha = 1f; alpha >= 0f; alpha-=0.01f)
         {
-            
+            Color tmp = GetComponent<SpriteRenderer>().color;
+            tmp.a = alpha;
+            GetComponent<SpriteRenderer>().color = tmp;
+            yield return new WaitForSeconds(.01f);
         }
-        GetComponent<SpriteRenderer>().color = tmp;
+        GameManager manager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        transform.position = startingPos;
+        alive = true;
+        Color temp = GetComponent<SpriteRenderer>().color;
+        temp.a = 1f;
+        GetComponent<SpriteRenderer>().color = temp;
+        manager.resetCoins();
     }
 }
