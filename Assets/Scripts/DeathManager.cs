@@ -5,9 +5,12 @@ using UnityEngine;
 public class DeathManager : MonoBehaviour
 {
     public int deaths = 0;
+    public AudioClip levelCompleteSFX;
+    public AudioSource audioSource;
     void Start()
     {
-        GameObject sounds = GameObject.Find("SFX/Music");
+        GameObject sounds = GameObject.Find("Music");
+        audioSource = GetComponent<AudioSource>;
         DontDestroyOnLoad(gameObject);
         DontDestroyOnLoad(sounds);
     }
@@ -15,8 +18,8 @@ public class DeathManager : MonoBehaviour
     {
         deaths++;
     }
-    void Update()
+    public void finishSFX()
     {
-        
+        audioSource.PlayOneShot(levelCompleteSFX, 1F);
     }
 }

@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class finish : MonoBehaviour
 {
     public GameManager manager;
+    public DeathManager deathManager;
     void Start()
     {
 
@@ -18,6 +19,9 @@ public class finish : MonoBehaviour
     {
         if (collision.CompareTag("Player")&&manager.collectedCoins==manager.totalCoins)
         {
+            deathManager = GameObject.Find("Death Manager").GetComponent<DeathManager>();
+            deathManager.finishSFX();
+            print(deathManager);
             SceneManager.LoadScene("Level_"+(manager.level+1).ToString());
         }
     }

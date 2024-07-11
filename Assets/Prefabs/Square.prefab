@@ -105,8 +105,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3.2
   alive: 1
-  coinCollectSFX: {fileID: 8300000, guid: f0bbc9e3b2b787b4d93852c45b3d97d5, type: 3}
+  coinCollectSFX: {fileID: 8300000, guid: 93829e0ac31df7840a03cdf62dd7f2c0, type: 3}
   deathSFX: {fileID: 8300000, guid: 428b8544a2ebf814c9d23dfe46e39718, type: 3}
+  levelCompleteSFX: {fileID: 8300000, guid: cd4eb8e11738cc6489aa01a83884dbfa, type: 3}
+  audioSource: {fileID: 0}
 --- !u!50 &3419251991855608823
 Rigidbody2D:
   serializedVersion: 4
