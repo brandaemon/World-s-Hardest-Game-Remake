@@ -45,3 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deaths: 0
+  levelCompleteSFX: {fileID: 0}
+  audioSource: {fileID: 0}
+  musicObject: {fileID: 5991748359947009923, guid: c259e5d65c43aca49817d3f2495b9251, type: 3}

@@ -7,12 +7,17 @@ public class DeathManager : MonoBehaviour
     public int deaths = 0;
     public AudioClip levelCompleteSFX;
     public AudioSource audioSource;
+    public GameObject musicObject;
     void Start()
     {
-        GameObject sounds = GameObject.Find("Music");
-        audioSource = GetComponent<AudioSource>;
+        GameObject sounds = GameObject.Find("Music(Clone)");
+        audioSource = GetComponent<AudioSource>();
         DontDestroyOnLoad(gameObject);
-        DontDestroyOnLoad(sounds);
+        if(sounds==null)
+        {
+            Instantiate(musicObject,new Vector3(0,0,0),Quaternion.identity);
+            DontDestroyOnLoad(GameObject.Find("Music(Clone)"));
+        }
     }
     public void addDeath()
     {

@@ -21,7 +21,6 @@ public class finish : MonoBehaviour
         {
             deathManager = GameObject.Find("Death Manager").GetComponent<DeathManager>();
             deathManager.finishSFX();
-            print(deathManager);
             SceneManager.LoadScene("Level_"+(manager.level+1).ToString());
         }
     }
